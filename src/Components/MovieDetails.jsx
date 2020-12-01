@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom' 
 
 const BASE_URL = 'https://api.themoviedb.org/3/movie/'
-const API_URL = '?api_key=1d8a5b8800903f3add9a06720fcf8962'
+const API_URL = '?api_key='
 
 const IMAGE_URL = 'http://image.tmdb.org/t/p/'
 const BACKDROP_SIZE = 'original'
@@ -14,7 +14,7 @@ export const MovieDetails = () => {
 
     const getMovie = async () => {
         try {
-          const res = await fetch(BASE_URL + id + API_URL)
+          const res = await fetch(`${BASE_URL}${id}${API_URL}${process.env.REACT_APP_MOVIE_API}`)
         //   `${BASE_URL}${id}${API_URL}` BASE_URL + id + API_URL
           const newMovie = await res.json()
           setMovie(newMovie)
